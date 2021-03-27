@@ -7,6 +7,33 @@ public class LSESemRepetidos<T extends Comparable<T>> {
     private LSENode<T> ult;
     private int qtd;
 
+    LSENode<T> getPrim() {
+        return prim;
+    }
+
+    int getQtd() {
+        return qtd;
+    }
+
+    public boolean verifica(LSESemRepetidos<T> lista2) {
+        LSENode<T> aux, aux2;
+        int qtd2 = lista2.qtd;
+        if (this.qtd != qtd2) {
+            return false;
+        } else {
+            aux = this.prim;
+            aux2 = lista2.prim;
+            while (aux != null) {
+                if (aux.getInfo().compareTo(aux2.getInfo()) != 0) {
+                    return false;
+                }
+                aux = aux.getProx();
+                aux2 = aux2.getProx();
+            }
+            return true;
+        }
+    }
+
     // métodos publicos para manipulação da lista
     public void inserirValorInicio(T valor) {
         LSENode<T> novo;
@@ -138,7 +165,7 @@ public class LSESemRepetidos<T extends Comparable<T>> {
         } else {
             auxA = prim;
             auxB = prim;
-            for (int i = 1; i < qtd-1; i++) {
+            for (int i = 1; i < qtd - 1; i++) {
                 auxA = auxA.getProx();
                 if (result == auxA) {
                     auxB.setProx(auxA.getProx());

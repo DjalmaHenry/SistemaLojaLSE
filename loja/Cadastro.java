@@ -3,7 +3,6 @@ package loja;
 
 import br.unicap.c3.ed1.listas.LSESemRepetidos;
 import java.util.Scanner;
-import loja.Cliente;
 
 public class Cadastro {
 
@@ -12,7 +11,7 @@ public class Cadastro {
     public Cadastro() {
         clientes = new LSESemRepetidos();
     }
-
+    
     public void inserirValor(String cpf) {
         Scanner in = new Scanner(System.in);
         String nome, telefone, email;

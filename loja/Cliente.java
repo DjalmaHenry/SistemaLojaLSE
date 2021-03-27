@@ -16,8 +16,8 @@ public class Cliente implements Comparable<Cliente> {
         this.telefone = telefone;
         this.email = email;
     }
-    
-    public Cliente(String cpf){
+
+    public Cliente(String cpf) {
         this.cpf = cpf;
     }
 
@@ -57,7 +57,7 @@ public class Cliente implements Comparable<Cliente> {
         return "Nome: " + this.getNome() + " Telefone: " + this.getTelefone()
                 + " E-mail: " + this.getEmail();
     }
-    
+
     public int compareTo(Cliente cliente) {
         int result;
         result = this.cpf.compareTo(cliente.cpf);

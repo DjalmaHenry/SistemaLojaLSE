@@ -8,7 +8,6 @@ public class GerenciaAgenda {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Agenda agenda = new Agenda();
-        boolean result;
         int op;
         String nome;
         while (true) {

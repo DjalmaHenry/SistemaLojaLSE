@@ -1,28 +1,22 @@
 // Classe Cliente
-package loja;
+package agenda;
 
 import br.unicap.c3.ed1.listas.LSESemRepetidosOrdenada;
 
-public class Cliente implements Comparable<Cliente> {
+public class Contato implements Comparable<Contato> {
 
-    private String cpf;
     private String nome;
     private String telefone;
     private String email;
 
-    public Cliente(String cpf, String nome, String telefone, String email) {
-        this.cpf = cpf;
+    public Contato(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
     }
 
-    public Cliente(String cpf) {
-        this.cpf = cpf;
-    }
-
-    private String getCpf() {
-        return this.cpf;
+    public Contato(String nome) {
+        this.nome = nome;
     }
 
     private String getNome() {
@@ -58,9 +52,9 @@ public class Cliente implements Comparable<Cliente> {
                 + " E-mail: " + this.getEmail();
     }
 
-    public int compareTo(Cliente cliente) {
+    public int compareTo(Contato contato) {
         int result;
-        result = this.cpf.compareTo(cliente.cpf);
+        result = this.nome.compareTo(contato.nome);
         return result;
     }
 }

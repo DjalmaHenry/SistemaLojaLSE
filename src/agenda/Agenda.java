@@ -1,31 +1,27 @@
 // Classe Cadastro
-package loja;
+package agenda;
 
 import br.unicap.c3.ed1.listas.LSESemRepetidosOrdenada;
 import java.util.Scanner;
 
-public class Cadastro {
+public class Agenda {
 
-    private LSESemRepetidosOrdenada<Cliente> clientes;
+    private LSESemRepetidosOrdenada<Contato> contatos;
 
-    public Cadastro() {
-        clientes = new LSESemRepetidosOrdenada();
+    public Agenda() {
+        contatos = new LSESemRepetidosOrdenada();
     }
-    
-    public void inserirValor(String cpf) {
+
+    public void inserirValor(String nome) {
         Scanner in = new Scanner(System.in);
-        String nome, telefone, email;
+        String telefone, email;
         boolean result;
-        Cliente cliA = new Cliente(cpf, "", "", "");
-        result = clientes.buscaNum(cliA);
+        Contato conA = new Contato(nome);
+        result = contatos.buscaNum(conA);
 
         if (result == true) {
-            System.err.println("CPF já existe! Inserção não efetuada!");
+            System.err.println("Nome já existe! Inserção não efetuada!");
         } else {
-            System.out.println("Informe o Nome: ");
-            System.out.print("-> ");
-            nome = in.next();
-            in.nextLine();
             System.out.println("Informe o Telefone: ");
             System.out.print("-> ");
             telefone = in.next();
@@ -34,21 +30,21 @@ public class Cadastro {
             System.out.print("-> ");
             email = in.next();
             in.nextLine();
-            Cliente cliB = new Cliente(cpf, nome, telefone, email);
-            clientes.inserirValorSemV(cliB);
+            Contato conB = new Contato(nome, telefone, email);
+            contatos.inseri(conB);
         }
     }
 
-    public void alterarValor(String cpf) {
+    public void alterarValor(String nome) {
         Scanner in = new Scanner(System.in);
         String telefone, email;
-        Cliente cli;
+        Contato con;
         boolean result;
         int op;
-        Cliente cliA = new Cliente(cpf, "", "", "");
-        cli = clientes.buscarObjeto(cliA);
-        if (cli == null) {
-            System.err.println("CPF NÃO existe!");
+        Contato conA = new Contato(nome);
+        con = contatos.buscarObjeto(conA);
+        if (con == null) {
+            System.err.println("Nome NÃO existe!");
         } else {
             do {
                 System.out.println("O que deseja alterar?");
@@ -69,8 +65,8 @@ public class Cadastro {
                         System.out.print("-> ");
                         telefone = in.next();
                         in.nextLine();
-                        cli.atualizaEmail(email);
-                        cli.atualizaTelefone(telefone);
+                        con.atualizaEmail(email);
+                        con.atualizaTelefone(telefone);
                         System.out.println("Alteração efetuada com sucesso!");
                         break;
                     case 2:
@@ -78,7 +74,7 @@ public class Cadastro {
                         System.out.print("-> ");
                         email = in.next();
                         in.nextLine();
-                        cli.atualizaEmail(email);
+                        con.atualizaEmail(email);
                         System.out.println("Alteração efetuada com sucesso!");
                         break;
                     case 3:
@@ -86,7 +82,7 @@ public class Cadastro {
                         System.out.print("-> ");
                         telefone = in.next();
                         in.nextLine();
-                        cli.atualizaTelefone(telefone);
+                        con.atualizaTelefone(telefone);
                         System.out.println("Alteração efetuada com sucesso!");
                         break;
                     case 0:
@@ -100,28 +96,24 @@ public class Cadastro {
         }
     }
 
-    public void exibirValor(String cpf) {
-        Scanner in = new Scanner(System.in);
-        String nome, telefone, email;
-        Cliente aux;
-        boolean result;
-        Cliente cli = new Cliente(cpf, "", "", "");
-        aux = clientes.buscarObjeto(cli);
+    public void exibirValor(String nome) {
+        Contato aux;
+        Contato con = new Contato(nome);
+        aux = contatos.buscarObjeto(con);
         if (aux == null) {
-            System.err.println("CPF NÃO existe!");
+            System.err.println("Nome NÃO existe!");
         } else {
             System.out.println(aux);
-
         }
     }
 
-    public void removerValor(String cpf) {
-        Cliente cli = new Cliente(cpf, "", "", "");
-        clientes.removeValor(cli);
+    public void removerValor(String nome) {
+        Contato con = new Contato(nome);
+        contatos.removeValor(con);
     }
 
     public void exibirValores() {
-        clientes.exibirValores();
+        contatos.exibirValores();
     }
 
 }

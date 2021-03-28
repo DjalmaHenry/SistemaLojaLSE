@@ -1,4 +1,4 @@
-// Classe LSESemRepetidos
+// Classe LSESemRepetidosOrdenado
 package br.unicap.c3.ed1.listas;
 
 public class LSESemRepetidosOrdenada<T extends Comparable<T>> {

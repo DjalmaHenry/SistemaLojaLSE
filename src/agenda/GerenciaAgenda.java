@@ -1,4 +1,4 @@
-// Classe Aplicação
+// Classe GeranciaAgenda
 package agenda;
 
 import java.util.Scanner;

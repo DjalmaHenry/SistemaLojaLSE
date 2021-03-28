@@ -1,4 +1,4 @@
-// Classe Cliente
+// Classe Contato
 package agenda;
 
 import br.unicap.c3.ed1.listas.LSESemRepetidosOrdenada;

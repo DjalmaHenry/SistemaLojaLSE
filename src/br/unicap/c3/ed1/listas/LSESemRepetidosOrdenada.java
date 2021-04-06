@@ -53,6 +53,101 @@ public class LSESemRepetidosOrdenada<T extends Comparable<T>> {
         }
     }
 
+    //metodo de insercao ordenada permitindo repetidos
+    public void inseriOrdenadoRepetido(T valor) { // método de inserção ordenada
+        LSENode<T> novo = new LSENode(valor);
+        LSENode<T> atual, anterior = null;
+        if (qtd == 0) { // inserir na lista vazia
+            prim = novo;
+            ult = novo;
+            qtd = 1;
+            System.out.println("Inserção efetuada!");
+        } else if (qtd == 1) {
+            prim.setProx(novo);
+            ult = novo;
+            qtd++;
+        } else if (novo.getInfo().compareTo(prim.getInfo()) < 0) { // inserir no início da lista
+            novo.setProx(prim);
+            prim = novo;
+            qtd++;
+            System.out.println("Inserção efetuada!");
+        } else if (novo.getInfo().compareTo(ult.getInfo()) > 0) { // inserir no final da lista
+            ult.setProx(novo);
+            ult = novo;
+            qtd++;
+            System.out.println("Inserção efetuada!");
+        } else { // inserção no meio da lista
+            atual = prim;
+            while (atual != null) {
+                if (novo.getInfo().compareTo(atual.getInfo()) == 0) {
+                    LSENode<T> anterior2;
+                    anterior2 = anterior;
+                    anterior = atual;
+                    atual = atual.getProx();
+                    while (atual != null && novo.getInfo().compareTo(atual.getInfo()) == 0) {
+                        anterior2 = anterior;
+                        anterior = atual;
+                        atual = atual.getProx();
+                    }
+                    anterior2.setProx(novo);
+                    novo.setProx(anterior);
+                    qtd++;
+                    return;
+                } else if (novo.getInfo().compareTo(atual.getInfo()) < 0) { // inserir
+                    anterior.setProx(novo);
+                    novo.setProx(atual);
+                    qtd++;
+                    System.out.println("Inserção efetuada!");
+                    return;
+                } else {
+                    anterior = atual;
+                    atual = atual.getProx();
+                }
+            }
+        }
+    }
+
+    //metodo de remorcao ordenada incluindo repetidos
+    public void removeOrdenadoRepetido(T valor) {
+        LSENode<T> result, atual, anterior;
+        int cont = 0;
+        result = buscaProd(valor);
+        if (result == null) {
+            System.err.println("Erro, Valor NÃO encontrado!");
+        } else if (qtd == 1) {
+            prim = null;
+            ult = null;
+            qtd--;
+            System.out.println("Foi removido 1 valor com sucesso!");
+        } else {
+            atual = prim;
+            anterior = prim;
+            while (atual != null) {
+                if (result.getInfo().compareTo(atual.getInfo()) == 0) {
+                    LSENode<T> anterior2;
+                    anterior2 = anterior;
+                    anterior = atual;
+                    atual = atual.getProx();
+                    anterior2.setProx(anterior.getProx());
+                    qtd--;
+                    cont++;
+                    while (atual != null && result.getInfo().compareTo(atual.getInfo()) == 0) {
+                        anterior2 = anterior;
+                        anterior = atual;
+                        atual = atual.getProx();
+                        anterior2.setProx(anterior.getProx());
+                        qtd--;
+                        cont++;
+                    }
+                    System.out.println("Foi removido " + cont + " valor(es) com sucesso!");
+                    break;
+                }
+                anterior = atual;
+                atual = atual.getProx();
+            }
+        }
+    }
+
     public boolean verifica(LSESemRepetidosOrdenada<T> lista2) {
         LSENode<T> aux, aux2;
         int qtd2 = lista2.qtd;

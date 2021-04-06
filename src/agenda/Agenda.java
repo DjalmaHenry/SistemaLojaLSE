@@ -18,21 +18,16 @@ public class Agenda {
         boolean result;
         Contato conA = new Contato(nome);
         result = contatos.buscaNum(conA);
-
-        if (result == true) {
-            System.err.println("Nome já existe! Inserção não efetuada!");
-        } else {
-            System.out.println("Informe o Telefone: ");
-            System.out.print("-> ");
-            telefone = in.next();
-            in.nextLine();
-            System.out.println("Informe o E-mail: ");
-            System.out.print("-> ");
-            email = in.next();
-            in.nextLine();
-            Contato conB = new Contato(nome, telefone, email);
-            contatos.inseri(conB);
-        }
+        System.out.println("Informe o Telefone: ");
+        System.out.print("-> ");
+        telefone = in.next();
+        in.nextLine();
+        System.out.println("Informe o E-mail: ");
+        System.out.print("-> ");
+        email = in.next();
+        in.nextLine();
+        Contato conB = new Contato(nome, telefone, email);
+        contatos.inseriOrdenadoRepetido(conB);
     }
 
     public void alterarValor(String nome) {
@@ -109,7 +104,7 @@ public class Agenda {
 
     public void removerValor(String nome) {
         Contato con = new Contato(nome);
-        contatos.removeValor(con);
+        contatos.removeOrdenadoRepetido(con);
     }
 
     public void exibirValores() {

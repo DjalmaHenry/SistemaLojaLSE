@@ -27,7 +27,7 @@ public class Agenda {
         email = in.next();
         in.nextLine();
         Contato conB = new Contato(nome, telefone, email);
-        contatos.inseriOrdenadoRepetido(conB);
+        contatos.inserirValorSemV(conB);
     }
 
     public void alterarValor(String nome) {
@@ -104,7 +104,7 @@ public class Agenda {
 
     public void removerValor(String nome) {
         Contato con = new Contato(nome);
-        contatos.removeOrdenadoRepetido(con);
+        contatos.removeRepetido(con);
     }
 
     public void exibirValores() {

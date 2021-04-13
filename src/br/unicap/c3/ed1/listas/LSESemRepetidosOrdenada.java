@@ -148,6 +148,48 @@ public class LSESemRepetidosOrdenada<T extends Comparable<T>> {
         }
     }
 
+    public void removeRepetido(T valor) {
+        LSENode<T> atual, anterior;
+        int cont = 0;
+        if (qtd == 0) {
+            System.err.println("Erro, lista vázia!");
+        } else if (qtd == 1) {
+            if (valor.compareTo(prim.getInfo()) == 0) {
+                prim = null;
+                ult = null;
+                qtd--;
+                System.out.println("Foi removido 1 valor com sucesso!");
+            } else {
+                System.err.println("Valor NÃO encontrado!");
+            }
+        } else {
+            atual = prim;
+            anterior = prim;
+            while (atual != null) {
+                if (valor.compareTo(prim.getInfo()) == 0) {
+                    prim = prim.getProx();
+                    atual = prim;
+                    anterior = prim;
+                    qtd--;
+                    cont++;
+                } else if (valor.compareTo(atual.getInfo()) == 0) {
+                    anterior.setProx(atual.getProx());
+                    atual = anterior.getProx();
+                    qtd--;
+                    cont++;
+                } else {
+                    anterior = atual;
+                    atual = atual.getProx();
+                }
+            }
+            if (cont > 0) {
+                System.out.println("Foi removido " + cont + " valor(es) com sucesso!");
+            } else {
+                System.err.println("Valor NÃO encontrado!");
+            }
+        }
+    }
+   
     public boolean verifica(LSESemRepetidosOrdenada<T> lista2) {
         LSENode<T> aux, aux2;
         int qtd2 = lista2.qtd;

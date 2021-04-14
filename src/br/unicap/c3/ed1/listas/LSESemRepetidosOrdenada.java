@@ -165,7 +165,7 @@ public class LSESemRepetidosOrdenada<T extends Comparable<T>> {
         } else {
             atual = prim;
             anterior = prim;
-            while (atual != null) {
+            while (atual.getProx() != null) {
                 if (valor.compareTo(prim.getInfo()) == 0) {
                     prim = prim.getProx();
                     atual = prim;
@@ -182,6 +182,12 @@ public class LSESemRepetidosOrdenada<T extends Comparable<T>> {
                     atual = atual.getProx();
                 }
             }
+            if (atual.getInfo().compareTo(valor) == 0) {
+                atual = anterior.getProx();
+                qtd--;
+                cont++;
+                ult = anterior;
+            }
             if (cont > 0) {
                 System.out.println("Foi removido " + cont + " valor(es) com sucesso!");
             } else {
@@ -189,7 +195,7 @@ public class LSESemRepetidosOrdenada<T extends Comparable<T>> {
             }
         }
     }
-   
+
     public boolean verifica(LSESemRepetidosOrdenada<T> lista2) {
         LSENode<T> aux, aux2;
         int qtd2 = lista2.qtd;

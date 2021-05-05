@@ -1,4 +1,4 @@
-// Classe LDE
+// Classe LSECircular
 package br.unicap.c3.ed1.listas;
 
 public class LSECircular<T extends Comparable<T>> {
@@ -96,6 +96,22 @@ public class LSECircular<T extends Comparable<T>> {
                 System.out.println(aux.getInfo());
                 aux = aux.getProx();
             }
+        }
+    }
+
+    public int contaRepetidos(T valor) {
+        if (isEmpty()) {
+            return 0;
+        } else {
+            int cont = 0;
+            LSENode<T> aux = prim;
+            for (int i = 0; i != qtd; i++) {
+                if (valor.compareTo(aux.getInfo()) == 0) {
+                    cont++;
+                }
+                aux = aux.getProx();
+            }
+            return cont;
         }
     }
 }

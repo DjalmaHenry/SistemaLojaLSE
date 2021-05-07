@@ -92,25 +92,26 @@ public class LSECircular<T extends Comparable<T>> {
             System.out.println("Lista vazia!!");
         } else {
             aux = prim;
-            for (int i = 0; i != qtd; i++) {
+            do {
                 System.out.println(aux.getInfo());
                 aux = aux.getProx();
-            }
+            } while (aux != prim);
         }
     }
 
     public int contaRepetidos(T valor) {
+        LSENode<T> aux;
         if (isEmpty()) {
             return 0;
         } else {
             int cont = 0;
-            LSENode<T> aux = prim;
-            for (int i = 0; i != qtd; i++) {
+            aux = prim;
+            do {
                 if (valor.compareTo(aux.getInfo()) == 0) {
                     cont++;
                 }
                 aux = aux.getProx();
-            }
+            } while (aux != prim);
             return cont;
         }
     }

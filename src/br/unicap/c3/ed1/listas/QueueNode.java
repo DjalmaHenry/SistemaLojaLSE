@@ -3,7 +3,7 @@ package br.unicap.c3.ed1.listas;
 class QueueNode<T> { // esta classe tem visibilidade de pacote
 
     private T info;
-    private StackNode<T> prox;
+    private QueueNode<T> prox;
 
     QueueNode(T valor) {
         info = valor;

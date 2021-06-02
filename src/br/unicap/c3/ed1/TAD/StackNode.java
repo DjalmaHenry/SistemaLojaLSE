@@ -1,4 +1,4 @@
-package br.unicap.c3.ed1.listas;
+package br.unicap.c3.ed1.TAD;
 
 class StackNode<T> { // esta classe tem visibilidade de pacote
 

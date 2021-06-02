@@ -1,4 +1,5 @@
-package br.unicap.c3.ed1.listas;
+//Classe QueueNode
+package br.unicap.c3.ed1.TAD;
 
 class QueueNode<T> { // esta classe tem visibilidade de pacote
 

@@ -1,12 +1,12 @@
 package aplicacaoQueue;
 
-import br.unicap.c3.ed1.listas.Queue;
+import br.unicap.c3.ed1.TAD.Queue;
 import java.util.Scanner;
 
 public class Lanchonete {
 
     public static void main(String[] args) {
-        Queue pedidos = new Queue();
+        Queue pedidos = new Queue(1000);
         Scanner in = new Scanner(System.in);
         int op;
         do {

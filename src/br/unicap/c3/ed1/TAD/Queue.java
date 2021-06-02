@@ -1,12 +1,19 @@
-package br.unicap.c3.ed1.listas;
+//Classe Queue
+package br.unicap.c3.ed1.TAD;
 
 public class Queue<T> {
 
     private QueueNode<T> inicio;
     private QueueNode<T> fim;
+    private int limite;
+    private int qtd;
+
+    public Queue(int limite) {
+        this.limite = limite;
+    }
 
     public boolean isEmpty() {
-        if (inicio == null) {
+        if (qtd == 0) {
             return true;
         } else {
             return false;
@@ -14,7 +21,11 @@ public class Queue<T> {
     }
 
     public boolean isFull() {
-        return false;
+        if (qtd == limite) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public T head() {
@@ -26,9 +37,11 @@ public class Queue<T> {
         if (isEmpty()) {
             inicio = novo;
             fim = novo;
+            qtd++;
         } else {
             fim.setProx(novo);
             fim = novo;
+            qtd++;
         }
     }
 
@@ -37,8 +50,10 @@ public class Queue<T> {
         if (inicio == fim) {
             inicio = null;
             fim = null;
+            qtd = 0;
         } else {
             inicio = inicio.getProx();
+            qtd--;
         }
         return aux.getInfo();
     }

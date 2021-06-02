@@ -1,12 +1,12 @@
 package aplicacaoQueue;
 
-import br.unicap.c3.ed1.listas.Queue;
+import br.unicap.c3.ed1.TAD.Queue;
 import java.util.Scanner;
 
 public class AvaliaProjetos {
 
     public static void main(String[] args) {
-        Queue projetos = new Queue();
+        Queue projetos = new Queue(1000);
         Scanner in = new Scanner(System.in);
         int op;
         do {

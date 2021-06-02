@@ -1,6 +1,6 @@
 package aplicacaoStack;
 
-import br.unicap.c3.ed1.listas.Stack;
+import br.unicap.c3.ed1.TAD.Stack;
 import java.util.Scanner;
 
 //programa para converter um número de decimal para a base binária
